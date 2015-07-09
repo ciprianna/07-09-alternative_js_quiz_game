@@ -20,6 +20,7 @@ function is_correct_answer(answer_text, qX_answer) {
   q_answer = document.getElementById(qX_answer).innerText;
   if (answer_text === q_answer) {
     return true
+    user_got_right++;
   } else {
     return false
   }
@@ -66,4 +67,13 @@ function show_question(qX) {
   // qX = qX;
   questions = document.getElementsByClassName("question_info");
   for (i=0; i < questions.length; i++) {questions[i].className = "question_info hide_content"; questions.namedItem(qX).className = "question_info show_content";}
+}
+
+var user_got_right = 0;
+var questions = document.getElementsByClassName("question_info");
+
+function grade_quiz(){
+  var user_score = user_got_right / parseFloat(questions.length);
+  score = document.getElementById('score_display');
+  score.innerText = "You got " + user_got_right + " out of " + questions.length + " quesitons correct: " + (user_score * 100) + "%";
 }

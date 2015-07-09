@@ -3,13 +3,11 @@ form {
 }
 
 .show_content {
-  visibility: visible;
-  height: auto;
+  display: inline-block;
 }
 
 .hide_content {
-  visibility: hidden;
-  height: 0;
+  display: none;
 }
 
 .submit_button {

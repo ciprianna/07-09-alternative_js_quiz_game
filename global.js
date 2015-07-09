@@ -9,6 +9,7 @@ function given_answer(qX_given_answer) {
   return answer
 }
 
+var user_got_right = 0;
 // Checks if the answer was correct or not
 //
 // answer_text - String that the user has given
@@ -20,7 +21,6 @@ function is_correct_answer(answer_text, qX_answer) {
   q_answer = document.getElementById(qX_answer).innerText;
   if (answer_text === q_answer) {
     return true
-    user_got_right++;
   } else {
     return false
   }
@@ -37,6 +37,7 @@ function update_question_result(correct, qX_result) {
   result = document.getElementById(qX_result);
   if (correct === true) {
     result.innerText = "Success!";
+    user_got_right++;
   } else {
     result.innerText = "Wrong!";
   }
@@ -64,12 +65,11 @@ function process_answer_submission(qX){
 //
 // Returns div content of the selected div to the user
 function show_question(qX) {
-  // qX = qX;
   questions = document.getElementsByClassName("question_info");
   for (i=0; i < questions.length; i++) {questions[i].className = "question_info hide_content"; questions.namedItem(qX).className = "question_info show_content";}
 }
 
-var user_got_right = 0;
+
 var questions = document.getElementsByClassName("question_info");
 
 function grade_quiz(){

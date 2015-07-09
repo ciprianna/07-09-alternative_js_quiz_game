@@ -42,6 +42,10 @@ function update_question_result(correct, qX_result) {
 }
 
 // Runs the chain of functions needed for each question
+//
+// qX - id for the div the question content is in
+//
+// Returns the innerText to the screen of the qX_result div
 function process_answer_submission(qX){
   var answer_div = qX.concat("_answer");
   var result_div = qX.concat("_result");
@@ -51,4 +55,15 @@ function process_answer_submission(qX){
   answer = given_answer(given_answer_div);
   correct = is_correct_answer(answer, answer_div);
   update_question_result(correct, result_div);
+}
+
+// Toggles showing or hiding quesiton content
+//
+// qX - id for the div the question content is in
+//
+// Returns div content of the selected div to the user
+function show_question(qX) {
+  // qX = qX;
+  questions = document.getElementsByClassName("question_info");
+  for (i=0; i < questions.length; i++) {questions[i].className = "question_info hide_content"; questions.namedItem(qX).className = "question_info show_content";}
 }

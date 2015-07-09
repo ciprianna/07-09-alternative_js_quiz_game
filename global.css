@@ -1,0 +1,17 @@
+form {
+  display: inline;
+}
+
+.show_content {
+  visibility: visible;
+  height: auto;
+}
+
+.hide_content {
+  visibility: hidden;
+  height: 0;
+}
+
+.submit_button {
+  display: inline;
+}

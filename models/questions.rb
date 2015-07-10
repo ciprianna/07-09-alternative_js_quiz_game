@@ -37,4 +37,40 @@ class Question
     return store_results
   end
 
+  # Adds Object to database if the Object is valid
+  #
+  # Returns the Question Object
+  def add_to_database
+    if self.valid?
+      Question.add({"vocabulary" => "#{self.vocabulary}", "answer" => "#{self.answer}"})
+    else
+      false
+    end
+  end
+
+  # Utility method to determine if an Object contains valid fields or not
+  #
+  # Returns true/false Boolean
+  def valid?
+    valid = true
+
+    if self.vocabulary.nil? || self.vocabulary == ""
+      valid = false
+    end
+
+    if self.answer.nil? || self.answer == ""
+      valid = false
+    end
+
+    vocabulary = DATABASE.execute("SELECT vocabulary FROM questions;")
+
+    vocabulary.each do |word|
+      if vocabulary["vocabulary"] == @vocabulary
+        valid = false
+      end
+    end
+
+    return valid
+  end
+
 end

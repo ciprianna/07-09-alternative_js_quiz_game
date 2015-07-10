@@ -83,7 +83,6 @@ window.onload = function() {
         questions[i].className = "question_info hide_content";
         next_id = i
         var next_one = ++next_id; var next_one_id = questions[next_one].id;
-        console.log(questions[i]);
         questions[next_one_id].className = "question_info show_content";
         }
     }

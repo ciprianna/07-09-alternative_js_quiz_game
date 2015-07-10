@@ -21,13 +21,16 @@ window.onload = function() {
   // Returns true/false Boolean
   function is_correct_answer(answer_text) {
     var correct_answer = document.getElementsByClassName("correct_answer");
-    for (i = 0; i < correct_answer.length; i++) if (correct_answer[i] === on_question) {
-      var q_answer = correct_answer[i].value;
-    }
-    if (correct_answer.value === q_answer) {
-      return true
-    } else {
-      return false
+    var q_answer;
+    for (i = 0; i < correct_answer.length; i++) {
+      if (i === on_question) {
+      q_answer = correct_answer[i].id;
+      }
+      if (answer_text === q_answer) {
+        return true
+      } else {
+        return false
+      }
     }
   }
 
@@ -74,8 +77,7 @@ window.onload = function() {
   // Returns div content of the selected div to the user
   function show_question() {
     var this_button = this.id;
-    var button = next_buttons.namedItem(this_button);
-    var div = button.parentElement;
+    var div = this_button.parentElement;
     var qX = div.id;
     for (i=0; i < questions.length; i++) {
       if (questions[i].id == qX) {
@@ -97,12 +99,26 @@ window.onload = function() {
   }
 
   var q1_button = submitters.namedItem("q1_submitter");
+  var q2_button = submitters.namedItem("q2_submitter");
+  var q3_button = submitters.namedItem("q3_submitter");
+  var q4_button = submitters.namedItem("q4_submitter");
+  var q5_button = submitters.namedItem("q5_submitter");
 
   q1_button.onclick = process_answer_submission;
+  q2_button.onclick = process_answer_submission;
+  q3_button.onclick = process_answer_submission;
+  q4_button.onclick = process_answer_submission;
+  q5_button.onclick = process_answer_submission;
 
   var q2_next_button = next_buttons.namedItem("q2_next");
+  var q3_next_button = next_buttons.namedItem("q3_next");
+  var q4_next_button = next_buttons.namedItem("q4_next");
+  var q5_next_button = next_buttons.namedItem("q5_next");
 
   q2_next_button.onclick = show_question;
+  q3_next_button.onclick = show_question;
+  q4_next_button.onclick = show_question;
+  // q5_next_button.onclick = show_question;
 
   var grade_button = document.getElementById('grade_button');
   grade_button.onclick = grade_quiz;

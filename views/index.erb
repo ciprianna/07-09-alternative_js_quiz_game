@@ -7,28 +7,38 @@
 </head>
 <body>
   <h2>Translate to German</h2>
-  <div id="q1" class="question_info show_content">
-    <h3>Question 1</h3>
+  <% Question.all.each do |question| %>
+  <% if question.id == 1 %>
+    <% @class = "show_content" %>
+  <% else %>
+    <% @class = "hide_content" %>
+  <% end %>
+  <div id="q<%= question.id %>" class="question_info <%= @class %>">
+    <h3>Question <%= question.id %></h3>
     <p>
-      Please:
+      <%= question.vocabulary %>:
     </p>
     <ul>
-      <li>verzeihung</li>
-      <li id="q1_answer">bitte</li>
-      <li>danke</li>
-      <li>tschau</li>
+      <% question.choices.each do |choice| %>
+      <li><%= choice.choice %></li>
+      <% end %>
     </ul>
     <form>
-      <input type="text" id="q1_given_answer">
+      <input type="text" id="q_given_answer">
     </form>
-    <button id="q1_submitter" class="submit_button">Submit</button>
-    <div id="q1_result">
+    <button id="q<%= question.id %>_submitter" class="submit_button">Submit</button>
+    <div id="q<%= question.id %>_result">
 
     </div>
-    <button id="q2_next" class="next">Next</button>
+    <% if question.id == Question.all.length  %>
+      <button id="grade_button">Grade</button>
+    <% else %>
+      <button id="q<%= question.id %>_next" class="next">Next</button>
+    <% end %>
   </div>
+  <% end %>
 
-  <div id="q2" class="question_info hide_content">
+  <!-- <div id="q2" class="question_info hide_content">
     <h3>Question 2</h3>
     <p>
       I:
@@ -108,9 +118,7 @@
     <button id="q5_submitter" class="submit_button">Submit</button>
     <div id="q5_result">
 
-    </div>
-    <button id="grade_button">Grade</button>
-  </div>
+     -->
 
 
   <div id="score_display">

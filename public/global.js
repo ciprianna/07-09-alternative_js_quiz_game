@@ -73,7 +73,6 @@ window.onload = function() {
   //
   // Returns div content of the selected div to the user
   function show_question() {
-    var questions = document.getElementsByClassName("question_info");
     var this_button = this.id;
     var button = next_buttons.namedItem(this_button);
     var div = button.parentElement;

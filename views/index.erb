@@ -24,8 +24,10 @@
       <% end %>
     </ul>
     <form>
-      <input type="text" id="q_given_answer">
+      <input type="text" id="q<%= question.id %>_given_answer">
     </form>
+    <% @answer = question.answer %>
+    <div id="<%= @answer %>" class="correct_answer"></div>
     <button id="q<%= question.id %>_submitter" class="submit_button">Submit</button>
     <div id="q<%= question.id %>_result">
 
@@ -37,89 +39,6 @@
     <% end %>
   </div>
   <% end %>
-
-  <!-- <div id="q2" class="question_info hide_content">
-    <h3>Question 2</h3>
-    <p>
-      I:
-    </p>
-    <ul>
-      <li id="q2_answer">ich</li>
-      <li>wir</li>
-      <li>sie</li>
-      <li>ihr</li>
-    </ul>
-    <form>
-      <input type="text" id="q2_given_answer">
-    </form>
-    <button id="q2_submitter" class="submit_button">Submit</button>
-    <div id="q2_result">
-
-    </div>
-    <button id="q3_next" class="next">Next</button>
-  </div>
-
-  <div id="q3" class="question_info hide_content">
-    <h3>Question 3</h3>
-    <p>
-      Airport:
-    </p>
-    <ul>
-      <li>bahn</li>
-      <li>busbahnhof</li>
-      <li>bahnhof</li>
-      <li id="q3_answer">flughafen</li>
-    </ul>
-    <form>
-      <input type="text" id="q3_given_answer">
-    </form>
-    <button id="q3_submitter" class="submit_button">Submit</button>
-    <div id="q3_result">
-
-    </div>
-    <button id="q4_next" class="next">Next</button>
-  </div>
-
-  <div id="q4" class="question_info hide_content">
-    <h3>Question 4</h3>
-    <p>
-      Potato:
-    </p>
-    <ul>
-      <li>fisch</li>
-      <li>fleisch</li>
-      <li id="q4_answer">kartoffel</li>
-      <li>brot</li>
-    </ul>
-    <form>
-      <input type="text" id="q4_given_answer">
-    </form>
-    <button id="q4_submitter" class="submit_button">Submit</button>
-    <div id="q4_result">
-
-    </div>
-    <button id="q5_next" class="next">Next</button>
-  </div>
-
-  <div id="q5" class="question_info hide_content">
-    <h3>Question 5</h3>
-    <p>
-      Thursday:
-    </p>
-    <ul>
-      <li id="q5_answer">donnerstag</li>
-      <li>deinstag</li>
-      <li>samstag</li>
-      <li>mittwoch</li>
-    </ul>
-    <form>
-      <input type="text" id="q5_given_answer">
-    </form>
-    <button id="q5_submitter" class="submit_button">Submit</button>
-    <div id="q5_result">
-
-     -->
-
 
   <div id="score_display">
 

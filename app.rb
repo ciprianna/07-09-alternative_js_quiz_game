@@ -9,3 +9,7 @@ require_relative "database_instance_methods.rb"
 
 # Models
 require_relative "models/quesitons.rb"
+require_relative "models/choices.rb"
+
+# Controllers
+require_relative "controllers/question.rb"

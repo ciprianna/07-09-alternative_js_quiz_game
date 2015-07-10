@@ -6,7 +6,7 @@ class Question
   include DatabaseInstanceMethods
 
   attr_reader :id
-  attr_accessor :name, :category_id
+  attr_accessor :vocabulary, :answer
 
   # Creates a new Question Object
   #
@@ -20,6 +20,21 @@ class Question
     @id = options["id"]
     @vocabulary = options["vocabulary"]
     @answer = options["answer"]
+  end
+
+  # Gets choices for the question
+  #
+  # Returns an Array of Choice Objects
+  def choices
+    results = DATABASE.execute("SELECT * FROM choices WHERE question_id = #{self.id};")
+
+    store_results = []
+
+    results.each do |hash|
+      store_results << Choice.new(hash)
+    end
+
+    return store_results
   end
 
 end

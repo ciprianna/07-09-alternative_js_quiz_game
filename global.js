@@ -1,6 +1,7 @@
 window.onload = function() {
   var user_got_right = 0;
   var submitters = document.getElementsByClassName("submit_button");
+  var next_buttons = document.getElementsByClassName("next");
 
   // Retrieve an answer from the field
   //
@@ -72,8 +73,20 @@ window.onload = function() {
   //
   // Returns div content of the selected div to the user
   function show_question() {
-    questions = document.getElementsByClassName("question_info");
-    for (i=0; i < questions.length; i++) {questions[i].className = "question_info hide_content"; questions.namedItem(qX).className = "question_info show_content";}
+    var questions = document.getElementsByClassName("question_info");
+    var this_button = this.id;
+    var button = next_buttons.namedItem(this_button);
+    var div = button.parentElement;
+    var qX = div.id;
+    for (i=0; i < questions.length; i++) {
+      if (questions[i].id == qX) {
+        questions[i].className = "question_info hide_content";
+        next_id = i
+        var next_one = ++next_id; var next_one_id = questions[next_one].id;
+        console.log(questions[i]);
+        questions[next_one_id].className = "question_info show_content";
+        }
+    }
   }
 
 
@@ -96,4 +109,18 @@ window.onload = function() {
   q3_button.onclick = process_answer_submission;
   q4_button.onclick = process_answer_submission;
   q5_button.onclick = process_answer_submission;
+
+  var q2_next_button = next_buttons.namedItem("q2_next");
+  var q3_next_button = next_buttons.namedItem("q3_next");
+  var q4_next_button = next_buttons.namedItem("q4_next");
+  var q5_next_button = next_buttons.namedItem("q5_next");
+
+  q2_next_button.onclick = show_question;
+  q3_next_button.onclick = show_question;
+  q4_next_button.onclick = show_question;
+  q5_next_button.onclick = show_question;
+
+  var grade_button = document.getElementById('grade_button');
+  grade_button.onclick = grade_quiz;
+
 }

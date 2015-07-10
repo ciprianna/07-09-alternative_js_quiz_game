@@ -8,7 +8,6 @@ end
 
 # Step 2 - Save the form
 get "/save_question" do
-  binding.pry
   if params["questions"]["answer"].to_i == 1
     answer = params["questions"]["choices_1"]
   elsif params["questions"]["answer"].to_i == 2
@@ -21,14 +20,17 @@ get "/save_question" do
 
   new_question = Question.new({"vocabulary" => params["questions"]["vocabulary"], "answer" => answer})
 
-  if new_question.add_to_database
-    choice_1 = Choice.new({"choice" => params["questions"]["choices_1"], "question_id" => "#{new_question.id}"})
+  added_question = new_question.add_to_database
+
+  if added_question != false
+    choice_1 = Choice.new({"choice" => params["questions"]["choices_1"], "question_id" => "#{added_question.id}"})
     choice_1.add_to_database
-    choice_2 = Choice.new({"choice" => params["questions"]["choices_2"], "question_id" => "#{new_question.id}"})
+    binding.pry
+    choice_2 = Choice.new({"choice" => params["questions"]["choices_2"], "question_id" => "#{added_question.id}"})
     choice_2.add_to_database
-    choice_3 = Choice.new({"choice" => params["questions"]["choices_3"], "question_id" => "#{new_question.id}"})
+    choice_3 = Choice.new({"choice" => params["questions"]["choices_3"], "question_id" => "#{added_question.id}"})
     choice_3.add_to_database
-    choice_4 = Choice.new({"choice" => params["questions"]["choices_4"], "question_id" => "#{new_question.id}"})
+    choice_4 = Choice.new({"choice" => params["questions"]["choices_4"], "question_id" => "#{added_question.id}"})
     choice_4.add_to_database
     erb :"questions/success"
   else

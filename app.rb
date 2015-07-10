@@ -1,3 +1,4 @@
+require "pry"
 require "sinatra"
 require "sinatra/reloader"
 
@@ -13,3 +14,4 @@ require_relative "models/choices.rb"
 
 # Controllers
 require_relative "controllers/main.rb"
+require_relative "controllers/questions.rb"

@@ -62,13 +62,13 @@ class Question
       valid = false
     end
 
-    vocabulary = DATABASE.execute("SELECT vocabulary FROM questions;")
-
-    vocabulary.each do |word|
-      if vocabulary["vocabulary"] == @vocabulary
-        valid = false
-      end
-    end
+    # vocabulary = DATABASE.execute("SELECT vocabulary FROM questions;")
+    #
+    # vocabulary.each do |word|
+    #   if vocabulary["vocabulary"] == @vocabulary
+    #     valid = false
+    #   end
+    # end
 
     return valid
   end

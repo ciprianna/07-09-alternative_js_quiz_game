@@ -13,3 +13,7 @@ form {
 .submit_button {
   display: inline;
 }
+
+.error {
+  color: crimson;
+}

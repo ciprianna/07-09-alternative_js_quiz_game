@@ -1,0 +1,42 @@
+<!-- Add a question -->
+<body>
+
+  <div>
+    <h2>Add a Question</h2>
+  </div>
+  <div>
+    <a href="/home">Return Home</a>
+  </div>
+
+  <!-- Error Message to display if the new food cannot be added -->
+  <div class="other_half">
+    <% if @error %>
+      <h3 class="error">Cannot add question: Missing information or duplicate value</h3>
+    <% end %>
+  </div>
+
+  <div>
+    <h3>Word in English</h3>
+    <form action="/save_question">
+      <input type="text" name="questions[vocabulary]" placeholder="Vocabulary">
+      <h3>Enter choices for the question in German</h3>
+      <p>1.  <input type="text" name="questions[choices_1]" placeholder="First Choice"></p>
+      <p>2.  <input type="text" name="questions[choices_2]" placeholder="Second Choice"></p>
+      <p>3.  <input type="text" name="questions[choices_3]" placeholder="Third Choice"></p>
+      <p>4.  <input type="text" name="questions[choices_4]" placeholder="Fourth Choice"></p>
+      <p>
+        Which choice is the correct answer?
+      </p>
+      <select name="questions[answer]">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+      <p>
+        <input type="submit">
+      </p>
+    </form>
+  </div>
+
+</body>

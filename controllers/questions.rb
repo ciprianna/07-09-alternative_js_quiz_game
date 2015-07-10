@@ -25,7 +25,6 @@ get "/save_question" do
   if added_question != false
     choice_1 = Choice.new({"choice" => params["questions"]["choices_1"], "question_id" => "#{added_question.id}"})
     choice_1.add_to_database
-    binding.pry
     choice_2 = Choice.new({"choice" => params["questions"]["choices_2"], "question_id" => "#{added_question.id}"})
     choice_2.add_to_database
     choice_3 = Choice.new({"choice" => params["questions"]["choices_3"], "question_id" => "#{added_question.id}"})

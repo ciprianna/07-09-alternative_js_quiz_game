@@ -22,10 +22,14 @@ window.onload = function() {
   // Returns true/false Boolean
   function is_correct_answer(answer_text) {
     var correct_answer = document.getElementsByClassName("correct_answer");
+    console.log(correct_answer);
     for (i = 0; i < correct_answer.length; i++) {
       if (i === on_question) {
-      var q_answer = correct_answer[i].id;
+        var q_answer = correct_answer[i].id;
+        console.log(correct_answer[i].id);
+        console.log(correct_answer[i]);
       }
+    }
       on_question++;
       console.log(q_answer);
       console.log(on_question);
@@ -34,8 +38,6 @@ window.onload = function() {
       } else {
         return false
       }
-    }
-
   }
 
   // Updates the result div for the question
@@ -82,13 +84,13 @@ window.onload = function() {
   function show_question() {
     var this_button = this;
     var div = this_button.parentElement;
-    console.log(div);
     var qX = div.id;
     for (i=0; i < questions.length; i++) {
       if (questions[i].id == qX) {
         questions[i].className = "question_info hide_content";
         next_id = i
-        var next_one = ++next_id; var next_one_id = questions[next_one].id;
+        var next_one = ++next_id;
+        var next_one_id = questions[next_one].id;
         questions[next_one_id].className = "question_info show_content";
         }
     }

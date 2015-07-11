@@ -32,11 +32,18 @@
     <div id="q<%= question.id %>_result">
 
     </div>
+
     <% if question.id == Question.all.length  %>
-      <button id="grade_button">Grade</button>
+      <% @grade_button_class = "show_content" %>
+      <% @button_class = "hide_content" %>
     <% else %>
-      <button id="q<%= question.id %>_next" class="next">Next</button>
+      <% @grade_button_class = "hide_content" %>
+      <% @button_class = "show_content" %>
     <% end %>
+
+      <button id="grade_button" class="grade_button <%= @grade_button_class %>">Grade</button>
+      <button id="q<%= question.id %>_next" class="next <%= @button_class %>">Next</button>
+
   </div>
   <% end %>
 

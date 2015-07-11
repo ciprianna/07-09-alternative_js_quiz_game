@@ -22,17 +22,12 @@ window.onload = function() {
   // Returns true/false Boolean
   function is_correct_answer(answer_text) {
     var correct_answer = document.getElementsByClassName("correct_answer");
-    console.log(correct_answer);
     for (i = 0; i < correct_answer.length; i++) {
       if (i === on_question) {
         var q_answer = correct_answer[i].id;
-        console.log(correct_answer[i].id);
-        console.log(correct_answer[i]);
       }
     }
       on_question++;
-      console.log(q_answer);
-      console.log(on_question);
       if (answer_text === q_answer) {
         return true
       } else {
@@ -96,16 +91,18 @@ window.onload = function() {
     }
   }
 
-
   var questions = document.getElementsByClassName("question_info");
 
+  // Calculates the user's score
+  //
+  // Returns text to the score_display div
   function grade_quiz(){
     var user_score = user_got_right / parseFloat(questions.length);
     score = document.getElementById('score_display');
     score.innerText = "You got " + user_got_right + " out of " + questions.length + " quesitons correct: " + (user_score * 100) + "%";
   }
 
-  submitter_button = document.getElementsByClassName("submitters");
+  submitter_button = document.getElementsByClassName("submit_button");
 
   for (i = 0; i < submitter_button.length; i++) {
     submitter_button[i].addEventListener("click", process_answer_submission);
@@ -117,29 +114,7 @@ window.onload = function() {
     next_buttons[i].addEventListener("click", show_question);
   }
 
-  var q1_button = submitters.namedItem("q1_submitter");
-  var q2_button = submitters.namedItem("q2_submitter");
-  var q3_button = submitters.namedItem("q3_submitter");
-  var q4_button = submitters.namedItem("q4_submitter");
-  var q5_button = submitters.namedItem("q5_submitter");
-
-  q1_button.onclick = process_answer_submission;
-  q2_button.onclick = process_answer_submission;
-  q3_button.onclick = process_answer_submission;
-  q4_button.onclick = process_answer_submission;
-  q5_button.onclick = process_answer_submission;
-
-  var q2_next_button = next_buttons.namedItem("q2_next");
-  var q3_next_button = next_buttons.namedItem("q3_next");
-  var q4_next_button = next_buttons.namedItem("q4_next");
-  var q5_next_button = next_buttons.namedItem("q5_next");
-
-  q2_next_button.onclick = show_question;
-  q3_next_button.onclick = show_question;
-  q4_next_button.onclick = show_question;
-  q5_next_button.onclick = show_question;
-
-  var grade_button = document.getElementById('grade_button');
-  grade_button.onclick = grade_quiz;
+  var grade_button = document.getElementsByClassName("grade_button");
+  grade_button[4].onclick = grade_quiz;
 
 }

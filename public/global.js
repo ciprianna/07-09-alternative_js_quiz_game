@@ -1,5 +1,6 @@
 window.onload = function() {
   var user_got_right = 0;
+  var on_question = 0;
   var submitters = document.getElementsByClassName("submit_button");
   var next_buttons = document.getElementsByClassName("next");
 
@@ -21,17 +22,20 @@ window.onload = function() {
   // Returns true/false Boolean
   function is_correct_answer(answer_text) {
     var correct_answer = document.getElementsByClassName("correct_answer");
-    var q_answer;
     for (i = 0; i < correct_answer.length; i++) {
       if (i === on_question) {
-      q_answer = correct_answer[i].id;
+      var q_answer = correct_answer[i].id;
       }
+      on_question++;
+      console.log(q_answer);
+      console.log(on_question);
       if (answer_text === q_answer) {
         return true
       } else {
         return false
       }
     }
+
   }
 
   // Updates the result div for the question
@@ -69,15 +73,16 @@ window.onload = function() {
     correct = is_correct_answer(answer);
     update_question_result(correct, result_div);
   }
-  var on_question = 0;
+
   // Toggles showing or hiding quesiton content
   //
   // qX - id for the div the question content is in
   //
   // Returns div content of the selected div to the user
   function show_question() {
-    var this_button = this.id;
+    var this_button = this;
     var div = this_button.parentElement;
+    console.log(div);
     var qX = div.id;
     for (i=0; i < questions.length; i++) {
       if (questions[i].id == qX) {
@@ -96,6 +101,18 @@ window.onload = function() {
     var user_score = user_got_right / parseFloat(questions.length);
     score = document.getElementById('score_display');
     score.innerText = "You got " + user_got_right + " out of " + questions.length + " quesitons correct: " + (user_score * 100) + "%";
+  }
+
+  submitter_button = document.getElementsByClassName("submitters");
+
+  for (i = 0; i < submitter_button.length; i++) {
+    submitter_button[i].addEventListener("click", process_answer_submission);
+  }
+
+  next_buttons = document.getElementsByClassName("next");
+
+  for (i = 0; i < next_buttons.length; i++) {
+    next_buttons[i].addEventListener("click", show_question);
   }
 
   var q1_button = submitters.namedItem("q1_submitter");
@@ -118,7 +135,7 @@ window.onload = function() {
   q2_next_button.onclick = show_question;
   q3_next_button.onclick = show_question;
   q4_next_button.onclick = show_question;
-  // q5_next_button.onclick = show_question;
+  q5_next_button.onclick = show_question;
 
   var grade_button = document.getElementById('grade_button');
   grade_button.onclick = grade_quiz;
